@@ -1,3 +1,6 @@
+/vendor/*
+
+
 #OSX
 .DS_Store
 .AppleDouble
