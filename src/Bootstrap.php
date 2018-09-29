@@ -43,7 +43,12 @@ switch ($routeInfo[0]) {
         [$controllerName, $method] = explode('#', $routeInfo[1]);
         $vars = $routeInfo[2];
 
-        $controller = new $controllerName;
+        $factory = new SocialNews\Framework\Rendering\TwigTemplateRendererFactory();
+
+        $templateRenderer = $factory->create();
+        $controller = new $controllerName($templateRenderer);
+
+//        $controller = new $controllerName;
         $response = $controller->$method($request, $vars);
         break;
 }
