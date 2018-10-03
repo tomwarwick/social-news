@@ -3,10 +3,13 @@
 declare(strict_types=1);
 
 use Auryn\Injector;
+
 use SocialNews\Framework\Rendering\TemplateRenderer;
 use SocialNews\Framework\Rendering\TwigTemplateRendererFactory;
 use SocialNews\Framework\Rendering\TemplateDirectory;
 
+use SocialNews\FrontPage\Application\SubmissionQuery;
+use SocialNews\FrontPage\Infrastructure\MockSubmissionQuery;
 
 $injector = new Injector();
 
@@ -19,5 +22,8 @@ $injector->delegate(
 );
 
 $injector->define(TemplateDirectory::class, [':rootDirectory' => ROOT_DIR]);
+
+$injector->alias(SubmissionQuery::class, MockSubmissionQuery::class);
+$injector->share(SubmissionQuery::class);
 
 return $injector;
