@@ -28,6 +28,7 @@ $injector->delegate(
 $injector->define(TemplateDirectory::class, [':rootDirectory' => ROOT_DIR]);
 
 $injector->alias(SubmissionQuery::class, MockSubmissionQuery::class);
+
 $injector->share(SubmissionQuery::class);
 
 $injector->define(
@@ -40,6 +41,8 @@ $injector->delegate(Connection::class, function () use ($injector): connection
         $factory = $injector->make(ConnectionFactory::class);
         return $factory->create();
     });
+
+$injector->share(Connection::class);
 
 
 return $injector;
