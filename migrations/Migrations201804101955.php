@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Migrations;
 
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Connection;
 
 final class Migrations201804101955

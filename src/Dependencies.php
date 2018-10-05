@@ -9,7 +9,7 @@ use SocialNews\Framework\Rendering\TwigTemplateRendererFactory;
 use SocialNews\Framework\Rendering\TemplateDirectory;
 
 use SocialNews\FrontPage\Application\SubmissionQuery;
-use SocialNews\FrontPage\Infrastructure\MockSubmissionQuery;
+use SocialNews\FrontPage\Infrastructure\DbalSubmissionQuery;
 
 use Doctrine\DBAL\Connection;
 use SocialNews\Framework\Dbal\ConnectionFactory;
@@ -27,7 +27,7 @@ $injector->delegate(
 
 $injector->define(TemplateDirectory::class, [':rootDirectory' => ROOT_DIR]);
 
-$injector->alias(SubmissionQuery::class, MockSubmissionQuery::class);
+$injector->alias(SubmissionQuery::class, DbalSubmissionQuery::class);
 
 $injector->share(SubmissionQuery::class);
 
