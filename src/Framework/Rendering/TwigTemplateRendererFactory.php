@@ -6,12 +6,15 @@ namespace SocialNews\Framework\Rendering;
 
 use Twig_Loader_Filesystem;
 use Twig_Environment;
+use Twig_Function;
+
+use SocialNews\Framework\Csrf\StoredTokenReader;
 
 final class TwigTemplateRendererFactory
 {
     private $templateDirectory;
 
-    public function __construct(TemplateDirectory $templateDirectory)
+    public function __construct(TemplateDirectory $templateDirectory, StoredTokenReader $storedTokenReader)
     {
         $this->templateDirectory = $templateDirectory;
     }
