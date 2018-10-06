@@ -11,6 +11,6 @@ return [
     [
         'GET',
         '/submit',
-        'SocialNews\Submission\Presentation\SubmissionController#'
+        'SocialNews\Submission\Presentation\SubmissionController#show'
     ],
 ];
