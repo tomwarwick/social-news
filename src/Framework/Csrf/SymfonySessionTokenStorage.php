@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SocialNews\Framework\Csrf;
 
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
