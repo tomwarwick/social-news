@@ -20,6 +20,9 @@ use Doctrine\DBAL\Connection;
 use SocialNews\Framework\Dbal\ConnectionFactory;
 use SocialNews\Framework\Dbal\DatabaseUrl;
 
+use SocialNews\Submission\Domain\SubmissionRepository;
+use SocialNews\Submission\Infrastructure\DbalSubmissionRepository;
+
 $injector = new Injector();
 
 $injector->delegate(
