@@ -6,6 +6,7 @@ namespace SocialNews\Submission\Presentation;
 
 use SocialNews\Framework\Csrf\StoredTokenValidator;
 use SocialNews\Framework\Csrf\Token;
+use SocialNews\Submission\Application\SubmitLink;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,17 +18,20 @@ final class SubmissionController
     private $templateRenderer;
     private $storedTokenValidator;
     private $session;
+    private $submitLinkHandler;
 
     public function __construct
     (
         TemplateRenderer     $templateRenderer,
         StoredTokenValidator $storedTokenValidator,
-        Session              $session
+        Session              $session,
+        SubmitLinkHandler    $submitLinkHandler
     )
     {
         $this->templateRenderer     = $templateRenderer;
         $this->storedTokenValidator = $storedTokenValidator;
         $this->session              = $session;
+        $this->submitLinkHandler    = $submitLinkHandler;
     }
 
     public function show(): Response
@@ -44,5 +48,11 @@ final class SubmissionController
             $this->session->getFlashBag()->add('errors', 'Invalid Token');
             return $response;
         }
+
+        $this->submitLinkHandler->handle(New SubmitLink
+        (
+            $request->get('url'),
+            $request->get('title')
+        ));
     }
 }
