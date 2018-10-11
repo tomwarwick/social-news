@@ -27,7 +27,6 @@ final class FrontPageController
     public function show(): Response
     {
 
-
         $content = $this->templateRenderer->render('FrontPage.html.twig', [
             'submissions' => $this->submissionQuery->execute(),
         ]);

@@ -56,5 +56,7 @@ $injector->alias(TokenStorage::class, SymfonySessionTokenStorage::class);
 
 $injector->alias(SessionInterface::class, Session::class);
 
+$injector->alias(SubmissionRepository::class, DbalSubmissionRepository::class);
+
 
 return $injector;

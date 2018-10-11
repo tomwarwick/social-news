@@ -36,8 +36,10 @@ final class SubmissionController
 
     public function show(): Response
     {
-        $content = $this->templateRenderer->render('Submisson.html.twig');
+
+        $content = $this->templateRenderer->render('Submission.html.twig');
         return new Response($content);
+
     }
 
     public function submit(Request $request): Response
@@ -54,5 +56,12 @@ final class SubmissionController
             $request->get('url'),
             $request->get('title')
         ));
+
+        $this->session->getFlashBag()->add(
+          'Success',
+          'Your URL was submitted.'
+        );
+
+        return $response;
     }
 }
