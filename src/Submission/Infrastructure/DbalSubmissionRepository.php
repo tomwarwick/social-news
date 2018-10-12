@@ -26,8 +26,8 @@ final class DbalSubmissionRepository implements SubmissionRepository
               '{$submission->getId()->toString()}',
               '{$submission->getTitle()}',
               '{$submission->getUrl()}',
-              '{$submission->getCreationDate()->format('Y-m-d H:i:s')}',
-            )
+              '{$submission->getCreationDate()->format('Y-m-d H:i:s')}'
+            );
         ");
     }
 }

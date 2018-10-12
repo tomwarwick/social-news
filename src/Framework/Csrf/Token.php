@@ -9,7 +9,7 @@ final class Token
 {
     private $token;
 
-    public function __construct(String $token)
+    public function __construct(string $token)
     {
         $this->token = $token;
     }
